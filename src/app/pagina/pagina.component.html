@@ -1,0 +1,148 @@
+<div class="constainer">
+	<ul ngbNav #nav="ngbNav" class="nav-tabs">
+		<li [ngbNavItem]="1">
+			<button ngbNavLink>Upcoming Movies</button>
+			<br>
+			<ng-template ngbNavContent>
+				<div class="conteudo">
+					<div class="search">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-off-2 col-lg-offset-1">
+								<div class="search-box">
+									<input type="text" [(ngModel)]="searchQuery" name="search" id="search"
+										class="form-control search-box__input" id="movie"
+										placeholder="search  for a movie movie by name">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 mb-3"
+							*ngFor="let movie of filteredUpcomingMovies | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+							<!---------card----------------------------->
+							<div class="card h-100">
+								<img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top"
+									alt="{{ movie.title }}">
+								<div class="card-body">
+									<h5 class="card-title">{{ movie.title }}</h5>
+
+									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+										(click)="openModal(movie.id)">Movie Detail</a>
+								</div>
+								<div class="card-footer">
+									<small class="text-muted">{{ movie.release_date }}</small>
+									<small class="text-muted float-right">{{ movie.vote_average }}</small><br>
+									<small class="text-muted float-right">{{movie.genre_ids}}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!---Paginação--->
+					<div class="pagination">
+						<button [disabled]="currentPage == 1" (click)="prevPage()">
+							previous page</button>
+						<button [disabled]="currentPage * itemsPerPage >= filteredUpcomingMovies.length"
+							(click)="nextPage()">Next Page</button>
+					</div>
+
+				</div>
+			</ng-template>
+		</li>
+		<li [ngbNavItem]="2">
+			<button ngbNavLink>Top Ratede</button>
+			<ng-template ngbNavContent>
+				<div class="conteudo">
+					<div class="search">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-off-2 col-lg-offset-1">
+								<div class="search-box">
+									<input type="text" [(ngModel)]="searchQuery" name="search" id="search"
+										placeholder="search  for a movie movie by name"
+										class="form-control search-box__input" id="movie">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 mb-3"
+							*ngFor="let movie of filteredMoviesTopRated | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+							<!---------card----------------------------->
+							<div class="card h-100">
+								<img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top"
+									alt="{{ movie.title }}">
+								<div class="card-body">
+									<h5 class="card-title">{{ movie.title }}</h5>
+									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+										(click)="openModal(movie.id)">Movie Detai</a>
+								</div>
+								<div class="card-footer">
+									<small class="text-muted">{{ movie.release_date }}</small>
+									<small class="text-muted float-right">{{ movie.vote_average }}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!---Paginação--->
+					<div class="pagination">
+						<button [disabled]="currentPage == 1" (click)="prevPage()">
+							previous page</button>
+						<button [disabled]="currentPage * itemsPerPage >= filteredUpcomingMovies.length"
+							(click)="nextPage()">Next Page</button>
+					</div>
+				</div>
+			</ng-template>
+		</li>
+		<li [ngbNavItem]="3">
+			<button ngbNavLink>Movie by Genres </button>
+			<ng-template ngbNavContent>
+				<div class="conteudo">
+					<div class="search">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-off-2 col-lg-offset-1">
+								<div class="search-box">
+									<input type="text" [(ngModel)]="searchQuery" name="search" id="search"
+										placeholder="search  for a movie movie by name"
+										class="form-control search-box__input" id="movie">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 mb-3"
+							*ngFor="let movie of filteredMoviesGenre | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+							<!---------card----------------------------->
+							<div class="card h-100">
+								<img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top"
+									alt="{{ movie.title }}">
+								<div class="card-body">
+									<h5 class="card-title">{{ movie.title }}</h5>
+									<p class="card-text">{{ movie.overview }}</p>
+									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+										(click)="openModal(movie.id)">Detalhes</a>
+								</div>
+								<div class="card-footer">
+									<small class="text-muted">{{ movie.release_date }}</small>
+									<small class="text-muted float-right">{{ movie.vote_average }}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!---Paginação--->
+					<div class="pagination">
+						<button [disabled]="currentPage == 1" (click)="prevPage()">Anterior</button>
+						<button [disabled]="currentPage * itemsPerPage >= filteredMoviesGenre.length"
+							(click)="nextPage()">Próximo</button>
+					</div>
+
+				</div>
+			</ng-template>
+		</li>
+	</ul>
+	<div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

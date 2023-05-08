@@ -1,0 +1,28 @@
+<div class="modal-header">
+      <h5 class="modal-title">{{ title }}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + poster_path" class="card-img-top" alt="{{title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ title }}</h5>
+          <div class="movieDetail">
+          <p class="card-text">{{ overview }}</p>
+        </div>
+      </div>
+        <div class="card-footer">
+          <b><small class="text-muted">Release date:&nbsp;{{ release_date }}</small></b><br>
+          <b><small class="text-muted">Vote:&nbsp;{{ vote_average }}</small></b><br>
+          <b><small class="text-muted">Language:&nbsp;{{ original_language }}</small></b><br>
+          <b><small class="text-muted">Vote:&nbsp;{{ vote_average }}</small><br></b>
+          <b> <small class="text-muted">Original title:&nbsp;{{ original_title }}</small><br></b>
+        </div>
+        <div class="closebtn">
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+      </div>
+        </div>
+        
+      
+    

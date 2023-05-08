@@ -1,0 +1,24 @@
+#ngbNav{
+    margin-top: 50px;
+}
+.constainer{
+    margin-bottom: 100px;
+}
+.search-box__input{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+#movie{
+    margin-left: 100px;
+    margin-right: 50px;
+    font-family: 'Roboto';
+    height: 55px;
+    font-size: 24px;
+}
+
+.constainer{
+    margin-bottom: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    align-items: center;
+}
