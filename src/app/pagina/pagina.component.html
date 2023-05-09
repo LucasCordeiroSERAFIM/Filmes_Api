@@ -27,7 +27,7 @@
 								<div class="card-body">
 									<h5 class="card-title">{{ movie.title }}</h5>
 
-									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+									<a *ngIf="movie.overview.length > 150" class="btn btn-primary"
 										(click)="openModal(movie.id)">Movie Detail</a>
 								</div>
 								<div class="card-footer">
@@ -41,11 +41,10 @@
 					<!---Paginação--->
 					<div class="pagination">
 						<button [disabled]="currentPage == 1" (click)="prevPage()">
-							previous page</button>
+							Previous page</button>&nbsp;&nbsp;
 						<button [disabled]="currentPage * itemsPerPage >= filteredUpcomingMovies.length"
 							(click)="nextPage()">Next Page</button>
 					</div>
-
 				</div>
 			</ng-template>
 		</li>
@@ -74,7 +73,7 @@
 									alt="{{ movie.title }}">
 								<div class="card-body">
 									<h5 class="card-title">{{ movie.title }}</h5>
-									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+									<a *ngIf="movie.overview.length > 150" class="btn btn-primary"
 										(click)="openModal(movie.id)">Movie Detai</a>
 								</div>
 								<div class="card-footer">
@@ -88,7 +87,7 @@
 					<!---Paginação--->
 					<div class="pagination">
 						<button [disabled]="currentPage == 1" (click)="prevPage()">
-							previous page</button>
+							Previous page</button>&nbsp;&nbsp;
 						<button [disabled]="currentPage * itemsPerPage >= filteredUpcomingMovies.length"
 							(click)="nextPage()">Next Page</button>
 					</div>
@@ -121,7 +120,7 @@
 								<div class="card-body">
 									<h5 class="card-title">{{ movie.title }}</h5>
 									<p class="card-text">{{ movie.overview }}</p>
-									<a *ngIf="movie.overview.length > 100" class="btn btn-primary"
+									<a *ngIf="movie.overview.length > 150" class="btn btn-primary"
 										(click)="openModal(movie.id)">Detalhes</a>
 								</div>
 								<div class="card-footer">
@@ -134,11 +133,11 @@
 
 					<!---Paginação--->
 					<div class="pagination">
-						<button [disabled]="currentPage == 1" (click)="prevPage()">Anterior</button>
-						<button [disabled]="currentPage * itemsPerPage >= filteredMoviesGenre.length"
-							(click)="nextPage()">Próximo</button>
+						<button [disabled]="currentPage == 1" (click)="prevPage()">
+							Previous page</button>&nbsp;&nbsp;
+						<button [disabled]="currentPage * itemsPerPage >= filteredUpcomingMovies.length"
+							(click)="nextPage()">Next Page</button>
 					</div>
-
 				</div>
 			</ng-template>
 		</li>
