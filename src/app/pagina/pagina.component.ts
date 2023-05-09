@@ -71,7 +71,7 @@ export class PaginaComponent {
 
   get filteredMoviesTopRated() {
     return this.topRatede.results.filter(movie => {
-      if (!this.topRatede) {
+      if (!this.topRatede.results) {
         return [];
       }
       else{
@@ -82,8 +82,13 @@ export class PaginaComponent {
 }
 
 get filteredMoviesGenre() {
-  return this.topRatede.results.filter(movie => {
+  return this.genreMovies.results.filter(movie => {
+if(!this.genreMovies.results){
+  return [];
+}
+else{
   return movie.genre_ids.includes(parseInt(this.searchQuery));
+}
 });
 
 }
